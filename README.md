@@ -1,21 +1,40 @@
-# WireGuard VPN (Self-Hosted)
+# WireGuard VPN (Self-Hosted) + Remote Access
 
-A self-hosted VPN server deployed using WireGuard on Linux, configured for secure remote access as part of my home lab
+This project documents the setup of a self-hosted WireGuard VPN server to securely access services in a Linux-based home lab environment.
 
-## Overview
+**WireGuard**: Fast, modern VPN protocol with strong encryption  
+**Use Cases**: Secure remote access to internal services such as SMB and SSH
 
-- Built and configured a private VPN using WireGuard.
-- Enabled secure remote access to my home network with key-based authentication.
-- Applied system hardening and firewall rules for improved security.
-- Designed for cross-platform support (Linux, Windows, Android).
-- Part of a broader self-hosted infrastructure project.
-- Securely access my **SMB file server** from outside my LAN
-- Remotely manage my systems via **SSH** over an encrypted tunnel
+## Tech Stack
 
-## Key Features
+- Operating System: Debian Linux  
+- WireGuard VPN  
+- Bash Shell Scripting  
+- `iptables` Firewall
 
-- Key-based peer authentication
-- NAT routing and IPv4 forwarding
-- DNS leak protection
-- Minimal port exposure with strict firewall rules
-- Designed for Linux, Windows, and Android clients
+## Features
+
+- Lightweight VPN server using WireGuard  
+- Key-based peer authentication  
+- NAT routing and DNS leak protection  
+- Cross-platform support: Linux, Windows, Android  
+
+## Use Cases
+
+- Remote access to **SMB server** without exposing ports publicly  
+- Secure SSH management of home server from external networks  
+- Encrypted tunnelling for all traffic when on untrusted networks  
+
+## Network Security
+
+- WireGuard runs on a **non-standard port** to reduce automated scans  
+- Firewall configured to **allow VPN traffic only from known peers**  
+- Internal services like SSH and SMB are **not publicly exposed**, accessible only through the VPN  
+- DNS requests routed through the VPN to prevent leaks  
+
+## Protocol & Access Control
+
+- Only strong, modern encryption via WireGuard (ChaCha20 + Poly1305)  
+- SSH hardened with key-based login
+- SMB access restricted by subnet and user authentication  
+- Guest/anonymous access fully disabled on all internal services
